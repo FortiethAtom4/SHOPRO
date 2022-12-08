@@ -21,8 +21,8 @@ HOWEVER, each effect MUST have a corresponding effect text (texts separated by t
 Even a blank space is fine, as long as there is at least one \ to show where the text would be. 
 Otherwise that effect WILL NOT BE PROCESSED.
 
-I will further update this README with better specifics on effect creation/usage, game rules, and so forth. However, I have a Japanese quiz in 20 minutes
-and class is 15 minutes away from my apartment. 
+I will further update this README with better specifics on effect creation/usage, game rules, and so forth. 
+However, I have a Japanese quiz in 20 minutes and class is 15 minutes away from my apartment. 
 
 ~~~~~~~~~~~~~~GAME RULES~~~~~~~~~~~~~~
 Just a placeholder for now. I'll be back... some day... (or just after finals.)
