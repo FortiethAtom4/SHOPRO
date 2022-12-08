@@ -1,0 +1,16 @@
+#IMPORTANT: Each Kyara effect MUST have its own corresponding description text (separated with \) or it WILL NOT be processed.
+Kyara "Test Dummy 1" M 400000 1 " bruh \bruh \bruh " [s hand sacrifice > summon hand |s field target 2 > destroy & gain_acp 5 |s field tap > damage 1 ]
+
+Kyara "Test Dummy 2" M 18 1 "Special Effect: 'The Clap ;)' - Prevent the next STD. Deal 2 damage to any target. " [s field tap > damage 2 & print STD prevented ;) ]
+Kyara "Test Dummy 3" F 17 1 "Special Effect: 'TMT' - Lose 3 HP and gain 3 ACP" [s field tap > lose_hp 3 & gain_acp 3 ]
+Kyara "Test Dummy 4" M 16 1 "Special Effect: ZA HANDO - Return another Kyara to its owner’s hand." [s field tap & target 1 > return_to_hand ]
+
+Event "Upstart Goblin" "Draw a card. Your opponent gains 2 HP." [s event > draw 1 & heal 2]
+Event "Get Flamed" "Deal 2 damage to your opponent." [s event > damage 2]
+Event "Swimming in Money" "Gain 2 ACP." [s event > gain_acp 2]
+Event "Carmichael" "Both players lose 5 HP." [s event > lose_hp 5 & damage 5] 
+Event "All or Nothing" "Lose 5 HP. Draw 2 cards. gain 2 ACP." [s event & pay_hp 5 > draw 2 & gain_acp 2]
+Event "Test Event 1" "Pay 1 HP. Draw a card." [s event & pay_hp 1 > draw 1] #so it seems effect payments work on events.
+Event "stupid" "stupid" [s event > lose_hp 2 ]
+
+#needs test cards for conditional effects, coming soon.
