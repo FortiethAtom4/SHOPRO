@@ -140,7 +140,7 @@ class Game():
 
 
     def read_cards(self): #do card reading stuff. TODO: separate Kyaras into their respective shows, somehow.
-        filepath = "C:/Users/txbbr/Desktop/shinenigans online, possibly/cards/cards.txt" # <- this is fucking stupid. TODO: fix.
+        filepath = "cards.txt" #future players must ensure cards.txt is in the game file as the rest of the game. For now.
         with open(filepath, "r", encoding="utf8") as cardfile:
             card_info = cardfile.readlines() #and thats it for the file i guess?
 
