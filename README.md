@@ -9,6 +9,14 @@ Thus, players of SHOPRO are encouraged to use the effect logic available to crea
 In the future, card logic will be improved and given access to more interesting effects. 
 
 ~~~~~~~~~~~~~~GAME RULES~~~~~~~~~~~~~~
+
+BEFORE READING:
+The list of rules below is fairly long and a lot to read. I recommend downloading the files and trying the game as-is after skimming the rules, just to
+get a feel for the game's structure. Try the commands, see what they do. Learn the interface. Then, after some experimentation, read the rules and card-making
+instructions to make the game your own. Enjoy.
+
+~~~~~~~~~~~~
+
 (Note: players familiar with complex card games such as Magic: the Gathering or Yu-Gi-Oh will recognize the general game structure.)
 
 SHOPRO is played by two players. Both players start with a deck of cards and 20 HP (Hitpoints). The goal of the game is to
