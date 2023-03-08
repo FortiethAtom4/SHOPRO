@@ -478,7 +478,7 @@ class Game():
                                 return "invalid"
                     
                     case "clubmember":
-                        return "penis"
+                        return "bruh"
                         #TODO stub to come back to after the rest of the game is done, if possible.
 
                     case _:
@@ -908,7 +908,7 @@ class Game():
                             curr_player.discard.append_card(removed_card)
                             self.current_events.append("discard \"" + removed_card.get_name() + "\"")
 
-                    self.turns.append("p̸̮͐̉̏ė̸̦͠n̷̻̽̓i̷̬̤̹͐̚s̸͓̯̼̀̐͑") #doesnt really matter what is appended to this list. Could be abused to have the program record replays.
+                    self.turns.append("pizza") #doesnt really matter what is appended to this list. Could be abused to have the program record replays.
                     print("Your turn ends.")
                     self.current_events.append("end 5")
 
