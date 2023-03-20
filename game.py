@@ -139,8 +139,8 @@ class Game():
         self.phase = 0 #6 phases total
 
 
-    def read_cards(self): #do card reading stuff. TODO: separate Kyaras into their respective shows, somehow.
-        filepath = "cards.txt" #future players must ensure cards.txt is in the game file as the rest of the game. For now.
+    def read_cards(self): #do card reading stuff. 
+        filepath = "cards.txt"
         with open(filepath, "r", encoding="utf8") as cardfile:
             card_info = cardfile.readlines() #and thats it for the file i guess?
 
@@ -478,7 +478,7 @@ class Game():
                                 return "invalid"
                     
                     case "clubmember":
-                        return "bruh"
+                        return "unfortunately this doesn't do anything so nothing happens here"
                         #TODO stub to come back to after the rest of the game is done, if possible.
 
                     case _:
@@ -507,7 +507,7 @@ class Game():
             return int(string)
         else:
             
-            #TODO: some regex shenanigans.
+            #TODO: some regex shenanigans. use split() to split into argument/value then parse.
             #have some keywords/prompts for getting numeric values from game logic.
             pass
         return 0 #placeholder return for now.
@@ -765,13 +765,14 @@ class Game():
 
                         case "search":
                             #syntax: search [zone] {tags} 
-                            match current_event[2]: #needs fixing. current_event is no longer split into list form.
-                                case "field":
-                                    pass
-                                case "deck":
-                                    pass
-                                case "discard":
-                                    pass
+                            # match current_event[2]: #needs fixing. current_event is no longer split into list form.
+                            #     case "field":
+                            #         pass
+                            #     case "deck":
+                            #         pass
+                            #     case "discard":
+                            #         pass
+                            pass
 
                         case "summon": #the 'summon' keyword always refers to self. 
                             cardname = re.search('"[^"]*"',current_event).group(0).replace("\""," ").strip()
@@ -908,7 +909,7 @@ class Game():
                             curr_player.discard.append_card(removed_card)
                             self.current_events.append("discard \"" + removed_card.get_name() + "\"")
 
-                    self.turns.append("pizza") #doesnt really matter what is appended to this list. Could be abused to have the program record replays.
+                    self.turns.append("p̸̮͐̉̏") #doesnt really matter what is appended to this list. Could be utilized to have the program record replays.
                     print("Your turn ends.")
                     self.current_events.append("end 5")
 
@@ -947,10 +948,11 @@ class Game():
 
     #HIGH PRIORITY:
     #TODO: Type up a bunch of cards in cards.txt using the existing effect language. IN PROGRESS
-    #TODO: Replace text-based gameplay with Pygame. IN PROGRESS
+
     #TODO: Create an AI opponent to replace player 2. COMING UP
 
     #LOWER PRIORITY:
+    #TODO: Replace text-based gameplay with Pygame. IN PROGRESS
     #TODO: Make conditions in resolve_event for the base game mechanics (e.g. buying kyaras) for consistency.
     #TODO: Club Members, eventually.
     #TODO: when current_events[] is fully up and running for ALL COMMANDS, establish Kyara passive effect recognition/activation/resolution.
@@ -966,5 +968,5 @@ class Game():
     #~~~~~~~~~~~~~~~~~~~~~~~~EXTRA GOALS IF YOU'RE FEELING SPICY~~~~~~~~~~~~~~~~~~~~~~~~~~~
     #TODO: Streamline and improve game interface. 
     #TODO: Utilize the self.turns attribute to put replay files together, allowing players to rewatch games.
-    #TODO: Create deck builder interface, allowing players to create their own decks saved as separate .txt files.
+    #TODO: Create deck builder interface, allowing players to create and save their own decks as separate .txt files.
     #TODO: randomly-generated cards??????
