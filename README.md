@@ -134,5 +134,5 @@ Kyara "Test Dummy 2" M 18 1 "Special Effect: 'Hello ;)' - Say hello. " [s field 
 As of 12/23/22, this list is exhaustive. HOWEVER, other effects and effect types are planned for the future. This README will be updated accordingly when these changes are made.
 
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ENJOY THE GAME~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# ENJOY THE GAME
 
