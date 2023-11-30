@@ -1,4 +1,4 @@
-# SHOPRO
+## SHOPRO
 Repository of my code on a Python version of a card game I made with my friends.
 
 As of 12/23/2022, SHOPRO will run in an interpreter as long as you have all the files. However, the code's documentation is mostly cursory and intended for my own notekeeping, so it can be a pain to read through for unfamiliar programmers. In the future I will organize/add tags to my code so the average nerd can understand it. But for now it remains as a block of text to just download and try out.
@@ -8,14 +8,14 @@ Thus, players of SHOPRO are encouraged to use the effect logic available to crea
 
 In the future, card logic will be improved and given access to more interesting effects. 
 
-GAME RULES
+# GAME RULES
 
 BEFORE READING:
 The list of rules below is fairly long and a lot to read. I recommend downloading the files and trying the game as-is after skimming the rules, just to
 get a feel for the game's structure. Try the commands, see what they do. Learn the interface. Then, after some experimentation, read the rules and card-making
 instructions to make the game your own. Enjoy.
 
-~~~~~~~~~~~~
+-----
 
 (Note: players familiar with complex card games such as Magic: the Gathering or Yu-Gi-Oh will recognize the general game structure.)
 
@@ -47,7 +47,7 @@ Kyara effects often come with a cost. A typical cost for a Kyara effect is to "t
 Event cards are one-time-use and typically do not have a cost (though a cost can be included, if desired). 
 
 
-~~~~~~~~~~~~~~INSTRUCTIONS FOR MAKING NEW CARDS~~~~~~~~~~~~~~
+## INSTRUCTIONS FOR MAKING NEW CARDS
 The file "cards.txt" contains all the cards the game will use. Anyone can easily add cards to the game or edit existing ones by editing this file.
 Each card is a collection of text and logic on one line.
 
@@ -109,7 +109,7 @@ EFFECT COSTS:
 
 'event' - a placeholder cost which sacrifices the card. Used to activate Event cards. 
 
-EFFECT RESOLUTIONS:
+# EFFECT RESOLUTIONS:
 
 'damage [value]' - Deals [value] damage to the opponent.
 
