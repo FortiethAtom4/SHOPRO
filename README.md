@@ -8,7 +8,7 @@ Thus, players of SHOPRO are encouraged to use the effect logic available to crea
 
 In the future, card logic will be improved and given access to more interesting effects. 
 
-~~~~~~~~~~~~~~GAME RULES~~~~~~~~~~~~~~
+GAME RULES
 
 BEFORE READING:
 The list of rules below is fairly long and a lot to read. I recommend downloading the files and trying the game as-is after skimming the rules, just to
