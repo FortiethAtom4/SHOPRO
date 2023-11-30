@@ -127,9 +127,7 @@ EFFECT COSTS:
 
 'summon [zone]' - Summons the card to the field. The given [zone] refers to where the card is being summoned from (e.g. 'summon hand' summons the card from the hand).
 
-'print [string]' - Prints a message. Generally reserved for testing purposes, or to be funny.
-
-Example usage (prints "hello :)" when tapped):
+'print [string]' - Prints a message. Generally reserved for testing purposes, or to be funny. Example usage (prints "hello :)" when tapped):
 Kyara "Test Dummy 2" M 18 1 "Special Effect: 'Hello ;)' - Say hello. " [s field tap > print Hello :) ]
 
 As of 12/23/22, this list is exhaustive. HOWEVER, other effects and effect types are planned for the future. This README will be updated as changes are made.
