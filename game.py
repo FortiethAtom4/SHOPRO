@@ -921,7 +921,7 @@ class Game():
 
             #After each action, any actions added to the current_events list are resolved in last-in first-out order.
             while len(self.current_events) > 0:
-                event = self.current_events[len(self.current_events) - 1]
+                event = self.current_events[len(self.current_events) - 1] #can probably be reduced to a single line.
                 self.resolve_event(event)
                 self.current_events.remove(event)
             
