@@ -6,12 +6,12 @@ from posixpath import split
 from turtle import pos
 from player import Player
 from zone import FaceUpZone, FaceDownZone
-from card import Kyara, Event #and club member... eventually.... pain
+from card import Kyara, Event #and club member...?
 import os
 import time
 import re
 
-import pygame #comin up
+#import pygame comin up
 
 def get_next_string(string = str, index = int, end_char = str): #NOTE: you can make newlines in effect text using the backslash ("\").
     i = index

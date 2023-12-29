@@ -2,7 +2,7 @@
 Kyara "Test Dummy 1" M 400000 1 " bruh \bruh \bruh " [s hand sacrifice > summon hand |s field target 2 > destroy & gain_acp 5 |s field tap > damage 1 ]
 
 Kyara "Test Dummy 2" M 18 1 "Special Effect: 'Smack'- Deal 2 damage. " [s field tap > damage 2 & print ;) ]
-Kyara "Test Dummy 3" F 17 1 "Special Effect: 'TMT' - Lose 3 HP and gain 3 ACP" [s field tap > lose_hp 3 & gain_acp 3 ]
+Kyara "Test Dummy 3" F 17 1 "Special Effect: 'TMT' - Lose 3 HP and gain 3 ACP " [s field tap > lose_hp 3 & gain_acp 3 ]
 Kyara "Test Dummy 4" M 16 1 "Special Effect: ZA HANDO - Return another Kyara to its owner’s hand." [s field tap & target 1 > return_to_hand ]
 Kyara "Berserker" M 100 3 "Special Effect: 'Collateral Damage' - Destroy a Kyara your opponent controls. Then, both players lose 3 HP." [s field tap & target 1 > destroy & damage 3 & lose_hp 3 ]
 
