@@ -38,7 +38,7 @@ Players take turns. Each turn has a rigid structure to follow:
 **Start Phase:** Player gains ACP and draws a card. On a player's first turn, they gain 1 ACP, on the second they gain 2, and from the third onwards they gain 3 ACP.
 (Note: If your deck is out of cards to draw, the game will deposit your discarded cards into your deck and draw from there. The concept of "decking out" does not exist in SHOPRO.)
 
-**Standby Phase:** A phase for some effect resolution. No actions can be taken at this time, except for some effects which specifically state this phase.
+**Standby Phase:** A phase for some effect resolution. No actions can be taken at this time ~~except for some effects which specifically state this phase.~~
 
 **Event Phase:** During this phase, the player may summon Kyaras, activate effects, play Event cards, or buy new cards from the Market.
 
