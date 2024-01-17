@@ -1,5 +1,5 @@
 ## SHOPRO
-Repository of my code on a Python version of a card game I made with my friends.
+Repository of a card game my friends and I came up with. 
 
 As of 12/23/2022, SHOPRO will run in an interpreter as long as you have all the files. However, the code's documentation is mostly cursory and intended for my own notekeeping, so it can be a pain to read through for unfamiliar programmers. In the future I will organize/add tags to my code so the average nerd can understand it. But for now it remains as a block of text to just download and try out.
 
