@@ -34,13 +34,13 @@ Kyaras, Market transactions, and some effects use a resource called ACP. ACP is 
 effects can grant bonus ACP. ACP can be spent immediately or saved for a future turn.
 
 Players take turns. Each turn has a rigid structure to follow:
--Start Phase: Player gains ACP and draws a card. On a player's first turn, they gain 1 ACP, on the second they gain 2, and from the third onwards they gain 3 ACP.
+Start Phase: Player gains ACP and draws a card. On a player's first turn, they gain 1 ACP, on the second they gain 2, and from the third onwards they gain 3 ACP.
 (Note: If your deck is out of cards to draw, the game will deposit your discarded cards into your deck and draw from there. The concept of "decking out" does not exist in SHOPRO.)
--Standby Phase: A phase for some effect resolution. No actions can be taken at this time, except for some effects which specifically state this phase.
--Event Phase: During this phase, the player may summon Kyaras, activate effects, play Event cards, or buy new cards from the Market.
--Attack Phase: During this Phase, the player may choose to attack with a set number of untapped Kyaras (explained below) they control. Damage dealt is equal to the number of Kyaras chosen to attack.
--Event Phase 2: During this phase, the player may again summon Kyaras, activate effects, play Event cards, and buy new cards from the Market.
--End Phase: A phase indicating the end of a turn. A player may not take actions during this phase, except for some specific effects which mention this phase.
+Standby Phase: A phase for some effect resolution. No actions can be taken at this time, except for some effects which specifically state this phase.
+Event Phase: During this phase, the player may summon Kyaras, activate effects, play Event cards, or buy new cards from the Market.
+Attack Phase: During this Phase, the player may choose to attack with a set number of untapped Kyaras (explained below) they control. Damage dealt is equal to the number of Kyaras chosen to attack.
+Event Phase 2: During this phase, the player may again summon Kyaras, activate effects, play Event cards, and buy new cards from the Market.
+End Phase: A phase indicating the end of a turn. A player may not take actions during this phase, except for some specific effects which mention this phase.
 
 Kyara effects often come with a cost. A typical cost for a Kyara effect is to "tap" that Kyara. In the original version of the game, this was represented by turning the Kyara card sideways, reminiscent of the tapping mechanic in Magic. A Kyara that has been tapped cannot be untapped until the beginning of your next turn. Some other effect costs may include paying HP, ACP, or even sacrificing other cards you control. 
 
