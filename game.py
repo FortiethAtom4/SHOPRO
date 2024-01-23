@@ -12,6 +12,8 @@ import time
 import re
 
 #import pygame comin up
+def get_first_card_name(string): #does the regex so i dont need to copy paste it everywhere
+    return re.search('"[^"]*"',string).group(0).replace("\""," ").strip()
 
 def get_next_string(string = str, index = int, end_char = str): #NOTE: you can make newlines in effect text using the backslash ("\").
     i = index
@@ -137,7 +139,6 @@ class Game():
 
         self.current_events = []
         self.phase = 0 #6 phases total
-
 
     def read_cards(self): #do card reading stuff. 
         filepath = "cards.txt"
@@ -283,6 +284,8 @@ class Game():
             return winning_player
         return -1
 
+
+
     def faceup_zone_input(self,zone = FaceUpZone, input_text = str): #TODO: allow for input from multiple faceup zones
         action = input(input_text + "\nInput: ") 
         if not action.isnumeric() or int(action) > zone.get_num_of_cards() or int(action) <= 0:
@@ -291,7 +294,9 @@ class Game():
         else:
             return action
         return "invalid"
+    
 
+    #event phase. Player actions are returned as strings to be appended to a list of events (which are resolved in LIFO order in later functions.)
     def event_phase(self,curr_player = Player,global_actions = list,is_first_phase = bool):
         action = ""
         event_phase_actions = ["summon","effect","event","market"]
@@ -327,8 +332,9 @@ class Game():
                             time.sleep(1.5)
                             return "invalid"
                         else:  #success
-                            curr_card = curr_player.hand.get_card_at_index(int(action) - 1).get_name()
-                            curr_card = curr_player.hand.find_card(curr_card) #curr_card is now a Card object.
+
+                            #get curr_card as Card object
+                            curr_card = curr_player.hand.find_card(curr_player.hand.get_card_at_index(int(action) - 1).get_name()) 
 
                             #pay ACP first. duh. (#NOTE stub for passive fx to change this if necessary)
                             curr_player.set_acp(curr_player.get_acp() - curr_card.get_cost())
@@ -378,10 +384,13 @@ class Game():
                                 time.sleep(1.5)
                                 return "invalid"
                             else:
-                                return self.activate_effect(eff_card, str(to_activate[int(chosen_effect) - 1]))
+                                #work here
+                                return "activate_effect \"" + eff_card.get_name() + "\" %" + str(to_activate[int(chosen_effect) - 1])
+                                #return self.activate_effect(eff_card, str(to_activate[int(chosen_effect) - 1]))
 
                         else:
-                            return self.activate_effect(eff_card,to_activate[0])
+                            return "activate_effect \"" + eff_card.get_name() + "\" %" + to_activate[0]
+                            #return self.activate_effect(eff_card,to_activate[0])
                     else:
                         return "invalid"
 
@@ -399,9 +408,10 @@ class Game():
                     event_cards.print_card_list()
                     print()
                     chosen_event = self.faceup_zone_input(event_cards,"Choose the Event card you would like to activate.")
-                    if chosen_event != "invalid":
+                    if chosen_event != "invalid": #success
                         chosen_event = event_cards.get_card_at_index(int(chosen_event) - 1)
-                        return self.activate_effect(chosen_event,chosen_event.get_effect_logic())
+                        return "activate_effect \"" + chosen_event.get_name() + "\" %" + chosen_event.get_effect_logic()
+                        #return self.activate_effect(chosen_event,chosen_event.get_effect_logic())
                     else:
                         return "invalid"
                         
@@ -511,8 +521,19 @@ class Game():
             #have some keywords/prompts for getting numeric values from game logic.
             pass
         return 0 #placeholder return for now.
+    
 
-    def activate_effect(self,eff_card,eff_string = str): #does cost-paying etc. for activated effects.
+    """activate_effect()
+    
+    Handler method for special effect activation.
+
+    Effect strings are parsed and their cost paid in this method.
+
+    Effects that are successfully activated are returned as specially-formatted strings to the current_events list, which 
+    resolves them in LIFO order using the resolve_event() method.
+    
+    """
+    def activate_effect(self,eff_card,eff_string = str):
 
         eff_string_temp = eff_string[1:eff_string.find(">")].strip()
 
@@ -649,6 +670,36 @@ class Game():
         return "effect \"" + eff_card.get_name() + "\" " + eff_string
 
 
+    
+    """ resolve_event()
+    Handler method for all game events. 
+
+    list of events handled by type
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    PLAYER COMMANDS:
+    -ff - surrender
+    -attack - attack with a kyara
+    -summon - summon a kyara (via kyara mechanic, not a special effect)
+    -activate_effect - player activates a card effect (resolution of these effects is handled by the "effect" event)
+
+    #TODO
+    
+    event
+    buy
+    check
+    end
+
+
+    GAME LOGIC:
+    -end - end of phase
+    -tap - card is tapped
+    -effect - card special effect resolution 
+
+    #TODO
+    
+    
+    """
     def resolve_event(self,current_event):
             
         #current player setup. Comes in handy for targeting.
@@ -680,22 +731,44 @@ class Game():
                 current_player.lose()
 
             case "attack": #card has been designated to attack.
-                attacking_card_name = re.search('"[^"]*"',current_event).group(0).replace("\""," ").strip()
+                attacking_card_name = get_first_card_name(current_event)
                 attacking_card = current_player.field.find_card(attacking_card_name)
                 target_player.set_hp(target_player.get_hp() - 1)
                 attacking_card.reset_attack()
                 self.current_events.append("tap \"" + attacking_card_name + "\"")
 
             case "tap": #card has been tapped.
-                tap_card = re.search('"[^"]*"',current_event).group(0).replace("\""," ").strip()
+                tap_card = get_first_card_name(current_event)
                 tap_card = current_player.field.find_card(tap_card)
                 tap_card.tap()
 
             case "summon": #card has been summoned by game mechanic (rather than by an effect).
-                summon_card_name = re.search('"[^"]*"',current_event).group(0).replace("\""," ").strip()
+                summon_card_name = get_first_card_name(current_event)
                 summon_card = current_player.hand.find_card_index(summon_card_name)
                 current_player.field.append_card(current_player.hand.remove_card(summon_card))
                 print(f"You summoned {summon_card_name}.")
+
+            case "activate_effect": #player activates a card effect.
+                effect_card_name = get_first_card_name(current_event)
+                effect_txt = current_event[current_event.find("%"):].replace("%","")
+                print(effect_txt)
+
+
+                self.current_events.append(self.activate_effect(effect_card_name,effect_txt))
+                
+            case "buy": #player buys a card from the market.
+                buytype = get_first_card_name(current_event)
+
+                match buytype:
+                    case "kyara":
+                        pass
+
+                    case "event":
+                        pass
+
+                    case "clubmember": #sigh
+                        pass 
+
 
 
             case "effect": #A special effect has been activated.
@@ -775,7 +848,7 @@ class Game():
                             pass
 
                         case "summon": #the 'summon' keyword always refers to self. 
-                            cardname = re.search('"[^"]*"',current_event).group(0).replace("\""," ").strip()
+                            cardname = get_first_card_name(current_event)
                             match effect[1]:
                                 case "hand":
                                     target_card = current_player.hand.find_card(cardname)
@@ -948,8 +1021,9 @@ class Game():
 
     #HIGH PRIORITY:
     #TODO: Type up a bunch of cards in cards.txt using the existing effect language. IN PROGRESS
-
-    #TODO: Create an AI opponent to replace player 2. COMING UP
+    #TODO: fix market effects (i.e. replace)
+    #TODO: unify order of effects. ALL player commands 
+   
 
     #LOWER PRIORITY:
     #TODO: Replace text-based gameplay with Pygame. IN PROGRESS
@@ -957,7 +1031,7 @@ class Game():
     #TODO: Club Members, eventually.
     #TODO: when current_events[] is fully up and running for ALL COMMANDS, establish Kyara passive effect recognition/activation/resolution.
     #TODO: add conditions during summoning queries for Kyaras with alternate/additional/optional summon costs. 
-    
+    #TODO: Create an AI opponent to replace player 2.
 
     #Broader goals: 
     #TODO: function to read in cards from an external text file. DONE
