@@ -684,8 +684,6 @@ class Game():
     -activate_effect - player activates a card effect (resolution of these effects is handled by the "effect" event)
 
     #TODO
-    
-    event
     buy
     check
     end
@@ -750,11 +748,11 @@ class Game():
 
             case "activate_effect": #player activates a card effect.
                 effect_card_name = get_first_card_name(current_event)
+                effect_card = current_player.hand.find_card(effect_card_name)
                 effect_txt = current_event[current_event.find("%"):].replace("%","")
-                print(effect_txt)
 
 
-                self.current_events.append(self.activate_effect(effect_card_name,effect_txt))
+                self.current_events.append(self.activate_effect(effect_card,effect_txt))
                 
             case "buy": #player buys a card from the market.
                 buytype = get_first_card_name(current_event)
@@ -1022,12 +1020,11 @@ class Game():
     #HIGH PRIORITY:
     #TODO: Type up a bunch of cards in cards.txt using the existing effect language. IN PROGRESS
     #TODO: fix market effects (i.e. replace)
-    #TODO: unify order of effects. ALL player commands 
+    #TODO: unify order of effects. ALL player commands must run through resolve_event for the sake of game longevity.
    
 
     #LOWER PRIORITY:
-    #TODO: Replace text-based gameplay with Pygame. IN PROGRESS
-    #TODO: Make conditions in resolve_event for the base game mechanics (e.g. buying kyaras) for consistency.
+    #TODO: Replace text-based gameplay with Pygame.
     #TODO: Club Members, eventually.
     #TODO: when current_events[] is fully up and running for ALL COMMANDS, establish Kyara passive effect recognition/activation/resolution.
     #TODO: add conditions during summoning queries for Kyaras with alternate/additional/optional summon costs. 
@@ -1042,5 +1039,8 @@ class Game():
     #~~~~~~~~~~~~~~~~~~~~~~~~EXTRA GOALS IF YOU'RE FEELING SPICY~~~~~~~~~~~~~~~~~~~~~~~~~~~
     #TODO: Streamline and improve game interface. 
     #TODO: Utilize the self.turns attribute to put replay files together, allowing players to rewatch games.
+            #>>>>>> Create a Snapshot object which creates a snapshot of the initial game state
+            #>>>>>> Snapshot objects should include a list of all events which occurred during the game
+            #>>>>>> Create a method which simulates a game for a replay by enacting a Snapshot's event list on its initial game state.
     #TODO: Create deck builder interface, allowing players to create and save their own decks as separate .txt files.
     #TODO: randomly-generated cards??????
