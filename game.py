@@ -384,13 +384,10 @@ class Game():
                                 time.sleep(1.5)
                                 return "invalid"
                             else:
-                                #work here
                                 return "activate_effect \"" + eff_card.get_name() + "\" %" + str(to_activate[int(chosen_effect) - 1])
-                                #return self.activate_effect(eff_card, str(to_activate[int(chosen_effect) - 1]))
 
                         else:
                             return "activate_effect \"" + eff_card.get_name() + "\" %" + to_activate[0]
-                            #return self.activate_effect(eff_card,to_activate[0])
                     else:
                         return "invalid"
 
@@ -675,7 +672,7 @@ class Game():
     Handler method for all game events. 
 
     list of events handled by type
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     PLAYER COMMANDS:
     -ff - surrender
