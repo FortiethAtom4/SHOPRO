@@ -430,6 +430,10 @@ class Game():
                                         time.sleep(1.5)
                                         return "invalid"
                                     else: #success
+
+
+                                        #TODO: move this to resolve_event().
+
                                         bought_kyara = self.market_kyaras.remove_card(c)
                                         curr_player.hand.append_card(bought_kyara)
                                         if self.market_kyaras_pile.get_num_of_cards() > 0:
@@ -443,6 +447,9 @@ class Game():
                                         time.sleep(1.5)
                                         return "invalid"
                                     else: #success
+
+                                        #TODO: move this to resolve_event().
+
                                         if self.market_kyaras_pile.get_num_of_cards() > 0:
                                             ck = self.market_kyaras.remove_card(c)
                                             self.market_kyaras_pile.shuffle_in(ck)
@@ -478,14 +485,22 @@ class Game():
                                     time.sleep(1.5)
                                     return "invalid"
                                 else: #success
-                                    bought_event = self.market_events.draw_card()
+
+
+
+                                    #TODO: add functionality in resolve_event().
+
+
+
+                                    # bought_event = self.market_events.draw_card()
+                                    bought_event = self.market_events.get_card_at_index(0)
                                     curr_player.hand.append_card(bought_event)
                                     return "buy event \"" + bought_event.get_name() + "\""
                             case _:
                                 return "invalid"
                     
                     case "clubmember":
-                        return "unfortunately this doesn't do anything so nothing happens here"
+                        return "unfortunately this doesn't do anything so nothing happens here lol"
                         #TODO stub to come back to after the rest of the game is done, if possible.
 
                     case _:
@@ -524,7 +539,7 @@ class Game():
     
     Handler method for special effect activation.
 
-    Effect strings are parsed and their cost paid in this method.
+    Effect strings are parsed and their respective in-game costs paid in this method.
 
     Effects that are successfully activated are returned as specially-formatted strings to the current_events list, which 
     resolves them in LIFO order using the resolve_event() method.
@@ -746,9 +761,13 @@ class Game():
             case "activate_effect": #player activates a card effect.
                 effect_card_name = get_first_card_name(current_event)
                 effect_card = current_player.hand.find_card(effect_card_name)
+
+                #Percent sign used to denote where effect logic starts. 
+                #No particular reason why it's %, it just needed to be something unique.
                 effect_txt = current_event[current_event.find("%"):].replace("%","")
 
-
+                #effect is then passed through activate_effect() method to deal with costs,
+                #all of which are passed through this resolve_event method separately.
                 self.current_events.append(self.activate_effect(effect_card,effect_txt))
                 
             case "buy": #player buys a card from the market.
